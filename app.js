@@ -40,6 +40,17 @@ app.use(function(req, res, next){
 
   // Hacer visible req.session en las vistas
   res.locals.session = req.session;
+
+  //Ejecuta un logout despues de 2 minutos
+  if(req.session.maxAge == 0){
+    delete req.session.user;
+  } else {
+    var maxTime = 120000;
+    req.session.cookie.expires = new Date(Date.now() + maxTime);
+    req.session.cookie.maxAge = maxTime;
+  }
+
+
   next();
 });
 
