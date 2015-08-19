@@ -1,4 +1,11 @@
-<table>
+<form method="get">
+  <label for="search" class="rem">Buscar preguntas</label>
+  <input type="text" name="search" plahceholder="Buscar" >
+  <input type="submit" value="Buscar">
+</form>
+</br>
+<div style="text-align: center;">
+<table style="margin: 0 auto;">
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
       <td><%= quizes[i].tema %></td>
@@ -16,6 +23,7 @@
     </tr>
   <% } %>
 </table>
+</div>
 <p/>
 <%if(session.user){%>
   <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
